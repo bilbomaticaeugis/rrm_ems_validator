@@ -6,13 +6,16 @@ from ConfigFile import ConfigFile
 from CheckGeoPDF import CheckGeoPDF
 from CheckImage import CheckImage
 from logFile import logFile
-from CheckKML import CheckKML
-from CheckGeoJson import CheckGeoJson
-from CheckDBF import CheckDBF
-from CheckConsequence import CheckConsequence
-from CheckSld import CheckSld
-from CheckXml import CheckXml
-from CheckFiles import CheckFiles
+from CheckGDB import CheckGDB
+from CheckSymbology import CheckSymbology
+from checkFactSheet import CheckFactSheet
+#from CheckKML import CheckKML
+#from CheckGeoJson import CheckGeoJson
+#from CheckDBF import CheckDBF
+#from CheckConsequence import CheckConsequence
+#from CheckSld import CheckSld
+#from CheckXml import CheckXml
+#from CheckFiles import CheckFiles
 
 
 def my_import(name):
@@ -33,10 +36,24 @@ def checklayer(root):
                         shp_dict[n_file[0]].append(file)
                     else:
                         shp_dict[n_file[0]] = [file]
-                return sorted(shp_dict)
+                #man = self.check_dict(shp_dict)
+                return shp_dict
         except Exception as ex:
             print (ex)
             continue
+
+def _checkLayerNomenclature(activ_cod,root,layer ):        
+    #check the nomenclature of the layer
+                        
+    #name in folder structure
+    path_in_system= splitall(root[root.index(activ_cod):])
+    #name of layer file
+    splited_layer = layer.split("_")
+
+    if not (splited_layer[0] == path_in_system[0] and splited_layer[1] == path_in_system[1] and splited_layer[2] == path_in_system[2]             
+        and splited_layer[3] == path_in_system[3] and splited_layer[6] == path_in_system[4]):
+        return False
+
 
 def splitall(path):
     allparts = []
@@ -52,35 +69,17 @@ def splitall(path):
             path = parts[0]
             allparts.insert(0, parts[1])
     return allparts
-
-
-def _checkLayerNomenclature(activ_cod,root,layer ):        
-    #check the nomenclature of the layer
-                        
-    #name in folder structure
-    path_in_system= splitall(root[root.index(activ_cod):])
-    #name of layer file
-    splited_layer = layer.split("_")
-
-    if not (splited_layer[0] == path_in_system[0] and splited_layer[1] == path_in_system[1] and splited_layer[2] == path_in_system[2]             
-        and splited_layer[3] == path_in_system[3] and splited_layer[6] == path_in_system[4]):
-        return False
-
-    x = re.search("r\d", splited_layer[5])
-    if (x):
-        return True
-
-    return False
-
-def splitroot(root,act):
+    
+def splitroot(self,root,act):
     ac= splitall(root[root.index(act):])
     return "_".join(ac)
+
 
 def main(activation_path,logFile):
     startTime = datetime.now()
     conf_file = ConfigFile("config.json")
     attri = conf_file.readJson()
-    path =activation_path
+    path = activation_path
     logs_text = attri['logsText']["main"]
     if os.path.isdir(path):
         activation_code = os.path.basename(path)
@@ -90,123 +89,46 @@ def main(activation_path,logFile):
         #save the retunr of each function valid to storage the shapefile array that after is insert in geopdf
         #hacer que guarde todas dentro del diccionario ver como lo actualiza para luego cuando valla ala otra carpeta tire de estas
         values={}
-        for root, dirs, files in os.walk(path):
+        for dirs in os.listdir(path):
             #walk inside each main folder "VECTOR, RASTER and RTP"
-            vector=attri["FoldersToCheck"][0]
-            rtp=attri["FoldersToCheck"][1]
-            raster=attri["FoldersToCheck"][2]
-            if root.find("AEM") != -1:
+            gdb = attri["FoldersToCheck"][0]
+            lyr = attri["FoldersToCheck"][1]
+            report = attri["FoldersToCheck"][2]
+            if path.find("AEM") != -1:
                 pass
             else:
-                dirs.sort()   
-                             
                 #check the different folders inside the product_version folder.
                 #1.Check the VECTOR folder
-                sources =[]
-                consecuences = []
-                numSource =0
-                numConsequence =0
+                if gdb in dirs:
+                    root2 = os.path.join(path, gdb)
+                    for root3, dirs_gdb, files in os.walk(root2):
+                        #get the different vector layer names
+                        if len(dirs_gdb) > 0:
+                            if attri["VectorFormats"]["GDB"]["types"][0] in dirs_gdb[0]:
+                                path = os.path.join(root3, dirs_gdb[0])
+                                VectorLayer = globals()[attri["VectorFormats"]["GDB"]["className"]]
+                                vectortype = VectorLayer(root3,attri,activation_code)
+                                vectortype.checkextension(path)
+                                #validate each vector layer                   
+                elif lyr in dirs:
+                    root2 = os.path.join(path, lyr)
+                    for root3, dirs_lyr, files in os.walk(root2):
+                        VectorLayer = globals()[attri["VectorFormats"]["symbology"]["className"]]
+                        vectortype = VectorLayer(root3,attri,activation_code)
+                        vectortype.checkextension(files)
+                elif report in dirs:
+                        root2 = os.path.join(path, report)
+                        for root3, dirs_lyr, files in os.walk(root2):
+                            VectorLayer = globals()[attri["VectorFormats"]["report"]["className"]]
+                            vectortype = VectorLayer(root3,attri,activation_code)
+                            vectortype.checkextension(files)
 
-                if (vector in dirs):
-                    root2= os.path.join(root,vector)
-                    #get the different vector layer names
-                    layers_group=checklayer(root2)
-                    
-                    sources.clear()
-                    consecuences.clear()
-                    numSource =0
-                    numConsequence =0
-                    
-                    aoi=None
-                    #validate each vector layer
-                    for layer in layers_group:
-                        _nameCorrect = True
-                        
-                        if not _checkLayerNomenclature(activation_code,root,layer):
-                            _nameCorrect = False
-                            err =  attri['logsText']['namingconvention']['incorrect'].copy()
-                            initial_err = activation_code + "|" + splitroot(root2,activation_code) + "|" + layer + "|" +  logFile.getCatValue(attri['namingconvention']) + "|" +  logFile.getIssueValue(attri['namingconvention']) + "|"
-                            err.insert(0,initial_err)
-                            logFile.writelogs(err)            
-
-                        if "source" in layer:
-                            numSource = numSource+1
-                            if not layer in sources:
-                                sources.append(layer)
-                            
-
-                        elif "summarytable" in layer:                                
-                            numConsequence= numConsequence+1
-                            if not layer in consecuences:
-                                consecuences.append(layer)
-
-                        #validate the layer for each vector format
-                        for key,val in attri["VectorFormats"].items():             
-                            VectorLayer=globals()[val["className"]]
-                            vectortype = VectorLayer(os.path.join(root,vector),layer,attri,activation_code)                            
-                            vectortype.setCorrectName(_nameCorrect)
-                            if _nameCorrect or ("source" in layer or "summarytable" in layer) :
-                                vectortype.checkextension()  
-                                aoi = vectortype.checkgeometry(aoi)
-                                vectortype.checkattributes()
-                                vectortype.close()
-
-                            elif key== "others":
-                                vectortype.checkextension()
-
-                    #check if there are missing layers
-                    vectortype = CheckFiles(os.path.join(root,vector),"",attri,activation_code)                            
-                    vectortype.checkMissingLayers(layers_group)
-                        
-
-                    #check if consequence table exists or if it´s present more than once
-                    if numConsequence == 0:
-                        err =  attri['logsText']['consequence']['extension']['NoExist'].copy()
-                        initial_err = activation_code + "|" + splitroot(root2,activation_code) + "|" + 'summarytable' + "|" +  logFile.getCatValue(attri['VectorFormats']['consequence']) + "|" +  logFile.getIssueValue(attri['VectorFormats']['consequence']) + "|"
-                        err.insert(0,initial_err)
-                        logFile.writelogs(err)    
-
-                    elif numConsequence >1 and len(consecuences)!= numConsequence :
-                        err =  attri['logsText']['consequence']['extension']['MoreThanOne'].copy()
-                        initial_err = activation_code + "|" + splitroot(root2,activation_code) + "|" + 'summarytable' + "|" +  logFile.getCatValue(attri['VectorFormats']['consequence']) + "|" +  logFile.getIssueValue(attri['VectorFormats']['consequence']) + "|"
-                        err.insert(0,initial_err)
-                        logFile.writelogs(err)    
-
-                    #check if source.dbf table exists or if it´s present more than once
-                    if numSource == 0:
-                        err =  attri['logsText']['dbf']['extension']['NoExist'].copy()
-                        initial_err = activation_code + "|" + splitroot(root2,activation_code) + "|" + 'source.dbf' + "|" +  logFile.getCatValue(attri['VectorFormats']['consequence']) + "|" +  logFile.getIssueValue(attri['VectorFormats']['consequence']) + "|"
-                        err.insert(0,initial_err)
-                        logFile.writelogs(err)    
-
-                    elif numSource >1 and len(sources)!= numSource:
-                        err =  attri['logsText']['dbf']['extension']['MoreThanOne'].copy()
-                        initial_err = activation_code + "|" + splitroot(root2,activation_code) + "|" + 'source.dbf' + "|" +  logFile.getCatValue(attri['VectorFormats']['consequence']) + "|" +  logFile.getIssueValue(attri['VectorFormats']['consequence']) + "|"
-                        err.insert(0,initial_err)
-                        logFile.writelogs(err) 
-
-                    numConsequence=0;
-                    numSource=0;
-                    
-                    ##2.Check RTP
-                    if (rtp in dirs) :
-                        v=rtp
-                    else:
-                        v=raster  
-                    for key,val in attri["ImageFormats"].items():
-                        raster_Layer=globals()[val["className"]]
-                        rastertype = raster_Layer( os.path.join(root,v),attri,activation_code)
-                        if val["className"] == "CheckGeoPDF":
-                            rastertype.checkextension(layers_group)
-                        else:
-                            rastertype.checkextension()
-              
 
         time = logs_text["time"]
         #shutil.rmtree(attri["Temp_root"])
         time.append(str(datetime.now() - startTime))
-        #logFile.writelogs(time)
-        #print("FINISH")
+        logFile.writelogs(time)
+        print("FINISH")
 
     except Exception as ex:
         e = logs_text["e"]
@@ -219,4 +141,3 @@ def main(activation_path,logFile):
 logFile = logFile()
 
 main(sys.argv[1],logFile)
-

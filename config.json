@@ -1,0 +1,964 @@
+{
+  "FoldersToCheck": [ "GEODATA","LYR", "FINAL_REPORT" ],
+  "files_to_check": {
+    "areaofinteresta": {
+      "name": "areaOfInterestA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "emsr_id": {
+          "DataType": "String"
+        },
+        "glide_no": {
+          "DataType": "String"
+        },
+        "area_id": {
+          "DataType": "String"
+        },
+        "locality": {
+          "DataType": "String"
+        },
+        "map_type": {
+          "DataType": "String"
+        },
+        "cat": "A4",
+        "issue": "warning"
+
+      },
+      "cat": "",
+      "issue": ""
+    },
+    "imagefootprinta": {
+      "name": "ImageFootprintA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "cat not defined",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "observedeventp": {
+      "name": "ObservedEventP",
+      "Geometry": "Point",
+      "Attributes": {
+        "event_type": {
+          "DataType": "String"
+        },
+        "obj_desc": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "observedeventl": {
+      "name": "ObservedEventL",
+      "Geometry": "Line",
+      "Attributes": {
+        "event_type": {
+          "DataType": "String"
+        },
+        "obj_desc": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "observedeventa": {
+      "name": "ObservedEventA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "event_type": {
+          "DataType": "String"
+        },
+        "obj_desc": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "ancillarycrisisinformationp": {
+      "name": "AncillaryCrisisInformationP",
+      "Geometry": "Point",
+      "Attributes": {
+        "event_type": {
+          "DataType": "String"
+        },
+        "obj_desc": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "ancillarycrisisinformationl": {
+      "name": "AncillaryCrisisInformationL",
+      "Geometry": "Line",
+      "Attributes": {
+        "event_type": {
+          "DataType": "String"
+        },
+        "obj_desc": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "ancillarycrisisinformationa": {
+      "name": "AncillaryCrisisInformationA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "event_type": {
+          "DataType": "String"
+        },
+        "obj_desc": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "builtupp": {
+      "name": "BuiltUpP",
+      "Geometry": "Point",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "builtupa": {
+      "name": "BuiltUpA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "facilitiesp": {
+      "name": "FacilitiesP",
+      "Geometry": "Point",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "facilitiesl": {
+      "name": "FacilitiesL",
+      "Geometry": "Line",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "facilitiesa": {
+      "name": "FacilitiesA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "transportationp": {
+      "name": "TransportationP",
+      "Geometry": "Point",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "transportationl": {
+      "name": "TransportationL",
+      "Geometry": "Line",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "transportationa": {
+      "name": "TransportationA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "naturallandusep": {
+      "name": "NaturalLandUseP",
+      "Geometry": "Point",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "naturallandusel": {
+      "name": "NaturalLandUseL",
+      "Geometry": "Line",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "naturallandusea": {
+      "name": "NaturalLandUseA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "info": {
+          "DataType": "String"
+        },
+        "damage_gra": {
+          "DataType": "String"
+        },
+        "det_method": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "dmg_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "hydrographyp": {
+      "name": "HydrographyP",
+      "Geometry": "Point",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "A4",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "hydrographyl": {
+      "name": "HydrographyL",
+      "Geometry": "Line",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "cat not defined",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "hydrographya": {
+      "name": "HydrographyA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "cat not defined",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "physiographyp": {
+      "name": "PhysiographyP",
+      "Geometry": "Point",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "elev": {
+          "DataType": "Integer64"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "cat not defined",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "physiographyl": {
+      "name": "PhysiographyL",
+      "Geometry": "Line",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "elev": {
+          "DataType": "Integer64"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "cat not defined",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    },
+    "physiographya": {
+      "name": "PhysiographyA",
+      "Geometry": "Polygon",
+      "Attributes": {
+        "obj_type": {
+          "DataType": "String"
+        },
+        "name": {
+          "DataType": "String"
+        },
+        "elev": {
+          "DataType": "Integer64"
+        },
+        "notation": {
+          "DataType": "String"
+        },
+        "or_src_id": {
+          "DataType": "Integer64"
+        },
+        "cat": "cat not defined",
+        "issue": "warning"
+      },
+      "cat": "A2",
+      "issue": "warning"
+    }
+  },
+
+  "DBF_atributtes": {
+    "name": "source",
+    "Attributes": {
+      "source_nam": {
+        "DataType": "String"
+      },
+      "src_date": {
+        "DataType": "String"
+      },
+      "source_tm": {
+        "DataType": "String"
+      },
+      "sensor_gsd": {
+        "DataType": "String"
+      },
+      "eventphase": {
+        "DataType": "String"
+      },
+      "src_id": {
+        "DataType": "Integer64"
+      },
+      "ONA": {
+        "DataType": "String"
+      },
+      "CC": {
+        "DataType": "String"
+      },
+      "DP": {
+        "DataType": "String"
+      },
+      "cat": "cat not defined",
+      "issue": "warning"
+    },
+    "cat": "cat not defined",
+    "issue": "warning"
+  },
+  "VectorFormats": {
+    "GDB":{
+      "types": [ "gdb" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckGDB",
+      "ignorefields": [ ],
+      "not_equal_AOI": {
+        "cat": "A7",
+        "issue": "Error"
+      }
+    },
+    "kml": {
+      "types": [ "kml", "kmz" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckKML",
+      "ignorefields": ["description","timestamp","begin","end","altitudeMode", "tessellate","extrude","visibility","drawOrder","icon","snippet" ]
+    },
+    "symbology": {
+      "types": [ "sld","lyr" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckSymbology",
+      "ignorefields": [ ]
+    },
+    "report": {
+      "types": [ "csv","pdf","doc","docx","xlsx","tiff","jpeg" ],
+      "FactSheetFormats":{
+        "pdf":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":1000000
+        },
+        "doc":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":5000000
+        },
+        "docx":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":5000000
+        },
+        "csv":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":5000000
+        },
+        "xlsx":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":5000000
+        },
+        "tiff":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":5000000
+        },
+        "jpeg":{
+          "NameConvention":"RRM_emergency",
+          "MaxFilesize":5000000
+        },
+        "xml":{
+          "NameConvention":"RRM_emergency",
+          "MaxFileSize":1000000
+        }
+      },
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckFactSheet",
+      "ignorefields": [ ]
+    },
+    "XML": {
+      "types": [ "xml" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckXml",
+      "ignorefields": [ ]
+    },
+    "json": {
+      "types": [ "json" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckGeoJson",
+      "ignorefields": [ "OBJECTID", "OBJECTID_1", "Shape_Area", "Shape_Leng" ]
+    },
+    "others": {
+      "types": [],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckFiles",
+      "ignorefields": [ ]
+    }
+  },
+  "ImageFormats": {
+    "image": {
+      "types": [ "tiff", "jpg", "jpeg" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckImage"
+    },
+    "pdf": {
+      "types": [ "pdf" ],
+      "cat": "A1",
+      "issue": "error",
+      "className": "CheckGeoPDF"
+    }
+  },
+  "logsText": {
+    "GDB": {
+      "extension": [ " The layer", " has not the file ", " \n" ],
+      "Notopen":[ " The GDB is corrupted", " \n" ],
+      "geometryName": {
+        "wrong_geom": [ " the file have a wrong name respect to the geometry \n" ],
+        "wrong_name": [ " the file name is not correct \n" ],
+        "not_in_AOI": [ "the shp layer is not within the AOI\n" ],
+        "not_equal_AOI": [ "the AOI in the shp layer is not the same\n" ]
+      },
+      "attribute": {
+        "DataType": [ " the field ", " is ", " but it should be ", "\n" ],
+        "fieldName": [ " the attribute ", " is not correct in this layer: ", "\n" ],
+        "fileName": [ " the file name is not correct \n" ],
+        "missingAttribute": [" the "," attribute is no present in layer: "," \n" ],
+        "extraAttribute": [ ""," is an extra attribute in layer: "," \n"]
+      }
+    },
+    "geojson": {
+      "extension": {
+        "keyError": [ " GeoJson has not the correct structure, the excepction KeyError return message: ", "  \n" ],
+        "Exception": [ " ", "\n" ],
+        "NoExist": [ " The folder doesn't have all the Geojson for this layer \n" ]
+      },
+      "geometryName": {
+        "wrong_geom": [ " the file have a wrong name respect to the geometry \n" ],
+        "wrong_name": [ " the file name is not correct \n" ]
+      },
+      "attribute": {
+        "DataType": [ " the field ", " is ", " but it should be ", " \n"],
+        "fieldName": [  " the attribute ", " is not correct in this layer: ", "\n" ],
+        "fileName": [ " the file name is not correct \n" ],
+        "missingAttribute": [" the "," attribute is no present in layer: "," \n" ],
+        "extraAttribute": [ ""," is an extra attribute in layer: "," \n"]
+      },
+      "structure": {
+        "nothas":[" The Geojson has not the correct:","\n"],
+        "notGeojson": [ " is not a Geojson \n" ]
+      }   
+    },
+    "KML": {
+      "NoExist": [ " The layer doesn't have the KML or KMZ file \n" ],
+      "geometryName": {
+        "wrong_geom": [ " the file have a wrong name respect to the geometry \n" ],
+        "wrong_name": [ " the file name is not correct \n" ]
+      },
+      "attribute": {
+        "DataType": [ " the field ", " is ", " but it should be ", " \n" ],
+        "fieldName": [ " the attribute ", " is not correct in this layer: ", "\n" ],
+        "fileName": [ " the file name is not correct \n" ],
+        "missingAttribute": [" the "," attribute is no present in layer: "," \n" ],
+        "extraAttribute": [ ""," is an extra attribute in layer: "," \n"]
+      },
+      "extension": {
+        "keyError": [ " KMZ has a problem, the excepction message retourned is: ", "  \n" ]
+      }
+    },
+    "symbology": {
+      "NoExist": [ " The file: ",  " is not a sld or lyr file \n" ]
+    },
+    "XML": {
+      "NoExist": [ " The layer doesn't have  the xml file \n" ]
+    },
+    "geopdf": {
+
+      "geojson": [ " the ", " shapefile doesn't have corresponding Geojson or Layer \n" ],
+      "shapefile": [ " Geopdf ", " doesn't have corresponding shapefile \n" ]
+    },
+    "dbf": {
+      "NoExist": [ " doesn't have a source.dbf file \n" ],
+      "notdbfextension": [ " the file contine source name but the extension is not .dbf \n" ],
+      "moreone": [ " the file source.dbf appear more that one time inside the dir \n" ],
+      "attribute": {
+        "DataType": [ " ", " doesn't have the correct DataType", "\n" ],
+        "fieldName": [ " the attribute ", " is not correct in this layer: ", "\n"  ],
+        "fileName": [ " the file name is not correct \n" ]
+      },
+      "missingAttribute": [ " the ", " attribute in file file doesn't have corresponding attribute in config file \n" ],
+      "extraAttribute": [ " the ", " attribute in conf file doesn't have corresponding attribute in dbf file \n" ]
+    },
+    "img": {
+      "notimg": [ " doesn't have a jpg file \n" ]
+    },
+    "consequenceTab": {
+      "notxlsx": [ " doesn't have a consequence table file \n" ],
+      "notdbxlsxext": [ " the file contine summarytable but the extension is not .xlsx \n" ],
+      "moreone": [ " the file summarytable  appear more that one time inside the dir \n" ]
+    },
+    "extraFiles": {
+      "hasExtra": [ " the ", " is not a correct file \n" ],
+      "hasExtraExt": [ " the extension ", " is extra \n" ]
+    },
+    "namingconvention": {
+      "cat": "A1",
+      "issue": "error",
+      "incorrect": [ " the file doesn't have correct name \n" ]
+    },
+    "report":{
+      "hasNotExtension":[ " The report has not a file with extension .","\n"],
+      "hasExtra": [ " the ", " is not a correct file \n" ],
+      "OverSize": [ " the file: ", " is over the maximum size allowed\n"]
+
+    },
+    "main": {
+      "time": [ " execution time \n" ],
+      "extension":[" The file ", " is not a GDB\n"],
+      "e": [ " \n" ]
+    },
+    "global": {
+      "naming_conv": [ " the file doesn't have the correct naming conventio \n" ]
+    }
+  }
+}
