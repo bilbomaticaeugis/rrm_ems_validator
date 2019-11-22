@@ -214,7 +214,7 @@ class CheckGDB(CommonFunctions):
                     self._checkattributes(layer,field_name_array)
                     layer_dictionary[name]["Field"] = field_name_array
                     n += 1
-                #print (layer_dictionary)
+                print (layer_dictionary)
                 #print ("a")
                 #self.checkgeometry(layer_dictionary)
             else:

@@ -756,6 +756,10 @@
       "not_equal_AOI": {
         "cat": "A7",
         "issue": "Error"
+      },
+      "not_correct_file":{
+        "cat": "A7",
+        "issue": "Error"
       }
     },
     "kml": {
@@ -773,7 +777,9 @@
       "ignorefields": [ ]
     },
     "report": {
-      "types": [ "csv","pdf","doc","docx","xlsx","tiff","jpeg" ],
+      "types": [ "csv","pdf","doc","docx","xlsx","tif","jpg"],
+      "image":["tif","jpg"],
+      "files":["csv","doc","docx","xlsx"],
       "FactSheetFormats":{
         "pdf":{
           "NameConvention":"RRM_emergency",
@@ -795,11 +801,11 @@
           "NameConvention":"RRM_emergency",
           "MaxFileSize":5000000
         },
-        "tiff":{
+        "tif":{
           "NameConvention":"RRM_emergency",
           "MaxFileSize":5000000
         },
-        "jpeg":{
+        "jpg":{
           "NameConvention":"RRM_emergency",
           "MaxFilesize":5000000
         },
@@ -930,7 +936,8 @@
       "extraAttribute": [ " the ", " attribute in conf file doesn't have corresponding attribute in dbf file \n" ]
     },
     "img": {
-      "notimg": [ " doesn't have a jpg file \n" ]
+      "notimg": [ " doesn't have a jpg file \n" ],
+      "corrupted":[ "the file: ", " is corrupted"] 
     },
     "consequenceTab": {
       "notxlsx": [ " doesn't have a consequence table file \n" ],
@@ -949,11 +956,12 @@
     "report":{
       "hasNotExtension":[ " The report has not a file with extension .","\n"],
       "hasExtra": [ " the ", " is not a correct file \n" ],
-      "OverSize": [ " the file: ", " is over the maximum size allowed\n"]
-
+      "overSize": [ " the file: ", " is over the maximum size allowed\n"],
+      "corrupted":[ "the file: ", " is corrupted"]
     },
     "main": {
       "time": [ " execution time \n" ],
+      "no_gdb": [" the folder doesn't have a GDB \n"],
       "extension":[" The file ", " is not a GDB\n"],
       "e": [ " \n" ]
     },

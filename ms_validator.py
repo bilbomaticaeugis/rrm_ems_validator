@@ -70,7 +70,7 @@ def splitall(path):
             allparts.insert(0, parts[1])
     return allparts
     
-def splitroot(self,root,act):
+def splitroot(root,act):
     ac= splitall(root[root.index(act):])
     return "_".join(ac)
 
@@ -94,6 +94,7 @@ def main(activation_path,logFile):
             gdb = attri["FoldersToCheck"][0]
             lyr = attri["FoldersToCheck"][1]
             report = attri["FoldersToCheck"][2]
+            has_gdb = False
             if path.find("AEM") != -1:
                 pass
             else:
@@ -104,12 +105,25 @@ def main(activation_path,logFile):
                     for root3, dirs_gdb, files in os.walk(root2):
                         #get the different vector layer names
                         if len(dirs_gdb) > 0:
-                            if attri["VectorFormats"]["GDB"]["types"][0] in dirs_gdb[0]:
-                                path = os.path.join(root3, dirs_gdb[0])
-                                VectorLayer = globals()[attri["VectorFormats"]["GDB"]["className"]]
-                                vectortype = VectorLayer(root3,attri,activation_code)
-                                vectortype.checkextension(path)
-                                #validate each vector layer                   
+                            for dir in dirs_gdb:
+                                if attri["VectorFormats"]["GDB"]["types"][0] in dir:
+                                    path = os.path.join(root3, dir)
+                                    VectorLayer = globals()[attri["VectorFormats"]["GDB"]["className"]]
+                                    vectortype = VectorLayer(root3,attri,activation_code)
+                                    vectortype.checkextension(path)
+                            has_gdb= True
+                        elif len(dirs_gdb) == 0 and len(files) > 0 and has_gdb== False:
+                            err = logs_text["no_gdb"].copy()
+                            initial_err = activation_code + "|" + splitroot(root3,activation_code) + "|" + gdb + "|" +  logFile.getCatValue( attri['VectorFormats']['GDB']['not_correct_file']) + "|" + logFile.getIssueValue(attri['VectorFormats']['GDB']['not_correct_file']) +"|"
+                            err.insert(0,initial_err)
+                            logFile.writelogs(err)
+                            for file in files:
+                                err2 = logs_text["extension"].copy()
+                                initial_err = activation_code + "|" + splitroot(root3,activation_code) + "|" + gdb + "|" +  logFile.getCatValue( attri['VectorFormats']['GDB']['not_correct_file']) + "|" + logFile.getIssueValue(attri['VectorFormats']['GDB']['not_correct_file']) +"|"
+                                err2.insert(0,initial_err)
+                                err2.insert(2,file)
+                                logFile.writelogs(err2)
+                            #validate each vector layer                   
                 elif lyr in dirs:
                     root2 = os.path.join(path, lyr)
                     for root3, dirs_lyr, files in os.walk(root2):
