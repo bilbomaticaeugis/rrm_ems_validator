@@ -4,6 +4,7 @@ from zipfile import ZipFile
 from logFile import logFile
 import numpy as np
 from CommonFunctions import CommonFunctions
+import shapely.wkt
 
 class CheckGDB(CommonFunctions):
     def __init__(self,root,conf_param,activ_code):
@@ -71,7 +72,7 @@ class CheckGDB(CommonFunctions):
             aoi_geometry = None
             for layer_object in layers['AOI']['LayerObject']:
                 layer_object
-                aoi_geometry = layer_object.geometry()
+                aoi_geometry = shapely.wkt.loads(layer_object.geometry().ExportToIsoWkt())
             ogr.UseExceptions()
             #aoi_extent = self.extent_calculation(aoi['AOI']['GeometryObject'].GetLayer().GetExtent())
             for key in layers:
@@ -214,7 +215,7 @@ class CheckGDB(CommonFunctions):
                     self._checkattributes(layer,field_name_array)
                     layer_dictionary[name]["Field"] = field_name_array
                     n += 1
-                print (layer_dictionary)
+                #print (layer_dictionary)
                 #print ("a")
                 #self.checkgeometry(layer_dictionary)
             else:

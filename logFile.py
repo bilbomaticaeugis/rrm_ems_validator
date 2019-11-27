@@ -26,7 +26,7 @@ class logFile():
         standar="dcct_rrm"
         concatenate = date + " " + pc_name + " " + standar + ": "  
         for val in value:
-            concatenate += val
+            concatenate += val.upper()
         
             
         print (concatenate.splitlines()[0])
