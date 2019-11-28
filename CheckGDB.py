@@ -79,7 +79,7 @@ class CheckGDB(CommonFunctions):
                 #layer_extent = self.extent_calculation(aoi[key]['GeometryObject']
                 for layer_object in layers[key]['LayerObject']:
                     pass
-                    if not layer_object.geometry().Within(aoi_geometry):
+                    if not layer_object.geometry().within(aoi_geometry):
                         err = self.logs_text["geometryName"]["not_in_AOI"].copy()
                         initial_err = self.activ_code + "|" + self.splitroot(self.root,self.activ_code) + "|" + self.layer + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|"
                         err.insert(0,initial_err)
