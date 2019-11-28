@@ -78,12 +78,13 @@ class CheckGDB(CommonFunctions):
             for key in layers:
                 #layer_extent = self.extent_calculation(aoi[key]['GeometryObject']
                 for layer_object in layers[key]['LayerObject']:
-                    pass
-                    if not layer_object.geometry().within(aoi_geometry):
-                        err = self.logs_text["geometryName"]["not_in_AOI"].copy()
-                        initial_err = self.activ_code + "|" + self.splitroot(self.root,self.activ_code) + "|" + self.layer + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|"
-                        err.insert(0,initial_err)
-                        self.logFile.writelogs(err) 
+                    lyr_shapely = shapely.wkt.loads(layer_object.geometry().ExportToIsoWkt())
+                    if not lyr_shapely.within(aoi_geometry):
+                        print(key)
+                        #err = self.logs_text["geometryName"]["not_in_AOI"].copy()
+                        #initial_err = self.activ_code + "|" + self.splitroot(self.root,self.activ_code) + "|" + self.layer + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|"
+                        #err.insert(0,initial_err)
+                        #self.logFile.writelogs(err) 
         except Exception as ex:
             print (ex)
 
@@ -217,7 +218,7 @@ class CheckGDB(CommonFunctions):
                     n += 1
                 #print (layer_dictionary)
                 #print ("a")
-                #self.checkgeometry(layer_dictionary)
+                self.checkgeometry(layer_dictionary)
             else:
                 inital_text_error = self.activ_code + "|" + CommonFunctions.split_root(self,self.root,self.activ_code) + "|" + name + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]) + "|"
                 geojson = logs_text["extension"]["NoExist"]
