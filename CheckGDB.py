@@ -12,6 +12,7 @@ class CheckGDB(CommonFunctions):
         self.root = root
         self.logFile = logFile()
         self.conf_param = conf_param
+        self.type= "GDB"
         self.activ_code = activ_code
         self.ds =""
 
@@ -77,14 +78,20 @@ class CheckGDB(CommonFunctions):
             #aoi_extent = self.extent_calculation(aoi['AOI']['GeometryObject'].GetLayer().GetExtent())
             for key in layers:
                 #layer_extent = self.extent_calculation(aoi[key]['GeometryObject']
+                feature_out=0
                 for layer_object in layers[key]['LayerObject']:
                     lyr_shapely = shapely.wkt.loads(layer_object.geometry().ExportToIsoWkt())
                     if not lyr_shapely.within(aoi_geometry):
-                        print(key)
-                        #err = self.logs_text["geometryName"]["not_in_AOI"].copy()
-                        #initial_err = self.activ_code + "|" + self.splitroot(self.root,self.activ_code) + "|" + self.layer + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]['not_in_AOI']) + "|"
-                        #err.insert(0,initial_err)
-                        #self.logFile.writelogs(err) 
+                        feature_out+=1
+    
+                if feature_out > 0:
+                    print(key)
+                    err = self.conf_param["logsText"]["GDB"]["geometryName"]["not_in_AOI"].copy()
+                    initial_err = self.activ_code + "|" + CommonFunctions.split_root(self,self.root,self.activ_code) + "|" + key + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]['not_equal_AOI']) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]['not_equal_AOI']) + "|"
+                    err.insert(0,initial_err)
+                    err.insert(2,key)
+                    err.insert(4,str(feature_out))
+                    self.logFile.writelogs(err)
         except Exception as ex:
             print (ex)
 
@@ -111,7 +118,7 @@ class CheckGDB(CommonFunctions):
                     checkField = False
 
             if checkField:    
-                initial_err = self.activ_cod + "|" + self.splitroot(self.root,self.activ_cod) + "|" + self.layer + "|" +  self.logFile.getCatValue(error_config_attr) + "|" +  self.logFile.getIssueValue(error_config_attr) + "|"
+                initial_err = self.activ_cod + "|" + CommonFunctions.split_root(self,self.root,self.activ_cod) + "|" + self.layer + "|" +  self.logFile.getCatValue(error_config_attr) + "|" +  self.logFile.getIssueValue(error_config_attr) + "|"
                 error = []
                 error.insert(0,initial_err)
                 error.insert(1 ,err[0])
@@ -163,7 +170,7 @@ class CheckGDB(CommonFunctions):
                         if  not (field_Type_Emer in field_Type_Conf or field_Type_Conf in field_Type_Emer) :
                             #the type in the layer is not the defined one
                             datatype = self.logs_text["attribute"]["DataType"].copy()
-                            initial_err = self.activ_cod + "|" + self.splitroot(self.root,self.activ_cod) + "|" + self.layer + "|" +  self.logFile.getCatValue( files_check[name_comp]["Attributes"]) + "|" + self.logFile.getIssueValue( files_check[name_comp]["Attributes"]) +"|"
+                            initial_err = self.activ_cod + "|" + CommonFunctions.split_root(self,self.root,self.activ_cod) + "|" + self.layer + "|" +  self.logFile.getCatValue( files_check[name_comp]["Attributes"]) + "|" + self.logFile.getIssueValue( files_check[name_comp]["Attributes"]) +"|"
                             datatype.insert(0,initial_err)
                             datatype.insert(2,field.name.lower())
                             datatype.insert(4,field_Type_Emer)

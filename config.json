@@ -862,7 +862,7 @@
       "geometryName": {
         "wrong_geom": [ " the file have a wrong name respect to the geometry \n" ],
         "wrong_name": [ " the file name is not correct \n" ],
-        "not_in_AOI": [ "the shp layer is not within the AOI\n" ],
+        "not_in_AOI": [ "the layer: "," has ", "features not within the AOI\n" ],
         "not_equal_AOI": [ "the AOI in the shp layer is not the same\n" ]
       },
       "attribute": {
