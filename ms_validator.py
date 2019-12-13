@@ -141,8 +141,8 @@ def main(activation_path,logFile):
         time = logs_text["time"]
         #shutil.rmtree(attri["Temp_root"])
         time.append(str(datetime.now() - startTime))
-        logFile.writelogs(time)
-        print("FINISH")
+        #logFile.writelogs(time)
+        #print("FINISH")
 
     except Exception as ex:
         e = logs_text["e"]

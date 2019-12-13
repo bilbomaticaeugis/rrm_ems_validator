@@ -82,15 +82,21 @@ class CheckGDB(CommonFunctions):
                 for layer_object in layers[key]['LayerObject']:
                     lyr_shapely = shapely.wkt.loads(layer_object.geometry().ExportToIsoWkt())
                     if not lyr_shapely.within(aoi_geometry):
-                        feature_out+=1
+                        feature_out+=1 
+                        if feature_out > 100: 
+                            break
     
                 if feature_out > 0:
-                    print(key)
+                    #print(key)
                     err = self.conf_param["logsText"]["GDB"]["geometryName"]["not_in_AOI"].copy()
                     initial_err = self.activ_code + "|" + CommonFunctions.split_root(self,self.root,self.activ_code) + "|" + key + "|" +  self.logFile.getCatValue(self.conf_param['VectorFormats'][self.type]['not_equal_AOI']) + "|" +  self.logFile.getIssueValue(self.conf_param['VectorFormats'][self.type]['not_equal_AOI']) + "|"
                     err.insert(0,initial_err)
                     err.insert(2,key)
-                    err.insert(4,str(feature_out))
+                    numFeat= str(feature_out)
+                    if (feature_out>100):
+                        numFeat= " MORE THAN 100 "
+
+                    err.insert(4,str(numFeat)+ " ")
                     self.logFile.writelogs(err)
         except Exception as ex:
             print (ex)
