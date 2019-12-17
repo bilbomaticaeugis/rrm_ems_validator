@@ -916,12 +916,12 @@
       "NoExist": [ " The file: ",  " is not a sld or lyr file \n" ]
     },
     "XML": {
-      "NoExist": [ " The layer doesn't have  the xml file \n" ]
+      "NoExist": [ " The layer doesn't have the xml file \n" ]
     },
     "geopdf": {
 
-      "geojson": [ " the ", " shapefile doesn't have corresponding Geojson or Layer \n" ],
-      "shapefile": [ " Geopdf ", " doesn't have corresponding shapefile \n" ]
+      "geojson": [ " the ", " shapefile doesn't have a corresponding Geojson or Layer \n" ],
+      "shapefile": [ " Geopdf ", " doesn't have a corresponding shapefile \n" ]
     },
     "dbf": {
       "NoExist": [ " doesn't have a source.dbf file \n" ],
@@ -951,7 +951,7 @@
     "namingconvention": {
       "cat": "A1",
       "issue": "error",
-      "incorrect": [ " the file doesn't have correct name \n" ]
+      "incorrect": [ " the file doesn't match with the naming convention \n" ]
     },
     "report":{
       "hasNotExtension":[ " The report has not a file with extension .","\n"],
@@ -966,7 +966,7 @@
       "e": [ " \n" ]
     },
     "global": {
-      "naming_conv": [ " the file doesn't have the correct naming conventio \n" ]
+      "naming_conv": [ " the file doesn't match with the naming convention \n" ]
     }
   }
 }
