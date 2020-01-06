@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["C:\\Projectos\\EMS\\Activations\\EMSN052"]
+            "args": ["C:\\Users\\Felipe\\Documents\\GitHub\\EMSN052"]
         }
     ]
 }

@@ -31,6 +31,6 @@ class logFile():
             
         print (concatenate.splitlines()[0])
         
-        root1 = os.path.join("C:\\Users\\fponce\\EMSN052", 'log.txt')
-        with open(root1,'a+') as file:
-            file.write(concatenate.upper())
+        #root1 = os.path.join("C:\\Users\\fponce\\EMSN052", 'log.txt')
+        #with open(root1,'a+') as file:
+            #file.write(concatenate.upper())
